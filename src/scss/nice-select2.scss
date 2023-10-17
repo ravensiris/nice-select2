@@ -125,7 +125,7 @@ $arrow_color: $gray !default;
     top: 100%;
     left: 0;
     transform-origin: 50% 0;
-    transform: scale(0.75) translateY(-math.div(-$input-height, 2));
+    transform: scale(0.75) translateY(-1 * math.div(-1 * $input-height, 2));
     transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
     z-index: 9;
     opacity: 0;
