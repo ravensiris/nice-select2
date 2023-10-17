@@ -18,7 +18,7 @@ $dropdown_padding: 18px !default;
 
 $gray_dark: #444 !default;
 $gray: #999 !default;
-$gray_light: #e8e8e8 ;
+$gray_light: #e8e8e8;
 $gray_lighter: #f6f6f6 !default;
 $primary_light: $gray !default;
 $arrow_color: $gray !default;
@@ -26,7 +26,8 @@ $arrow_color: $gray !default;
 @import "./prism";
 
 @mixin clearfix() {
-  &:before, &:after {
+  &:before,
+  &:after {
     content: "";
     display: table;
   }
@@ -39,7 +40,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $gray_dark;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-size: 14px;
   font-weight: normal;
   letter-spacing: -0.25px;
@@ -67,7 +68,7 @@ h2 {
 }
 
 h3 {
-  font-size: 18px;  
+  font-size: 18px;
   font-weight: 400;
   margin: 0 0 12px;
   padding-top: 12px;
@@ -85,7 +86,8 @@ a:not(.button) {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   border-bottom: 1px solid transparent;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-bottom: 1px solid $primary_light;
   }
 }
@@ -138,7 +140,8 @@ label {
   transition: all 0.2s ease-in-out;
   white-space: nowrap;
   width: auto;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: darken($primary, 4%);
   }
   &:active {
@@ -153,7 +156,8 @@ label {
     &:hover {
       border-color: darken($gray_light, 5%);
     }
-    &:active, &:focus {
+    &:active,
+    &:focus {
       border-color: $primary_light;
     }
   }
@@ -165,9 +169,8 @@ label {
   }
 }
 
-
 .header {
-  text-align: center;	
+  text-align: center;
   margin-bottom: 60px;
   @media screen and (min-width: 600px) {
     padding: 0 18px;

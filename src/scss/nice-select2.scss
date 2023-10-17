@@ -1,4 +1,4 @@
-@use 'sass:math';
+@use "sass:math";
 // Default variables
 $font_size: 14px !default;
 $font_size_small: 12px !default;
@@ -43,27 +43,28 @@ $arrow_color: $gray !default;
   &:hover {
     border-color: darken($gray_light, 5%);
   }
-  &:active, &:focus {
+  &:active,
+  &:focus {
     border-color: $primary_light;
   }
   // Arrow
-  &:after { 
+  &:after {
     border-bottom: 2px solid $arrow_color;
     border-right: 2px solid $arrow_color;
-    content: '';
-    display: block; 
+    content: "";
+    display: block;
     height: 5px;
     margin-top: -4px;
     pointer-events: none;
-    position: absolute; 
-    right: 12px; 
-    top: 50%; 
+    position: absolute;
+    right: 12px;
+    top: 50%;
     transform-origin: 66% 66%;
     transform: rotate(45deg);
     transition: all 0.15s ease-in-out;
     width: 5px;
   }
-  
+
   &.open {
     @extend :active;
     &:after {
@@ -79,11 +80,11 @@ $arrow_color: $gray !default;
     border-color: lighten($gray_light, 2%);
     color: $gray;
     pointer-events: none;
-    &:after { 
+    &:after {
       border-color: lighten($arrow_color, 20%);
     }
   }
-  
+
   // Modifiers
   &.wide {
     width: 100%;
@@ -103,7 +104,7 @@ $arrow_color: $gray !default;
     font-size: $font_size_small;
     height: $input_height_small;
     line-height: $input_height_small - 2;
-    &:after { 
+    &:after {
       height: 4px;
       width: 4px;
     }
@@ -113,18 +114,19 @@ $arrow_color: $gray !default;
     }
   }
 
-  .nice-select-dropdown{
+  .nice-select-dropdown {
     margin-top: 4px;
     background-color: #fff;
     border-radius: $input_border_radius;
-    box-shadow: 0 0 0 1px rgba($gray_dark, .11);
+    box-shadow: 0 0 0 1px rgba($gray_dark, 0.11);
 
     pointer-events: none;
     position: absolute;
-    top: 100%; left: 0;
+    top: 100%;
+    left: 0;
     transform-origin: 50% 0;
-    transform: scale(.75) translateY(- math.div(-$input-height, 2));
-    transition: all .2s cubic-bezier(0.5, 0, 0, 1.25), opacity .15s ease-out;
+    transform: scale(0.75) translateY(-math.div(-$input-height, 2));
+    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
     z-index: 9;
     opacity: 0;
   }
@@ -152,10 +154,12 @@ $arrow_color: $gray !default;
     padding-right: $dropdown_padding + 11;
     text-align: left;
     transition: all 0.2s;
-    &:hover, &.focus, &.selected.focus { 
+    &:hover,
+    &.focus,
+    &.selected.focus {
       background-color: $gray_lighter;
     }
-    &.selected { 
+    &.selected {
       font-weight: bold;
     }
     &.disabled {
@@ -164,8 +168,8 @@ $arrow_color: $gray !default;
       cursor: default;
     }
   }
-  
-  .optgroup{
+
+  .optgroup {
     font-weight: bold;
   }
 }
@@ -182,15 +186,11 @@ $arrow_color: $gray !default;
   }
 }
 
-
 .nice-select .list::-webkit-scrollbar {
-  width: 0
+  width: 0;
 }
 
-
-
-
-.nice-select{
+.nice-select {
   .has-multiple {
     white-space: inherit;
     height: auto;
@@ -199,21 +199,21 @@ $arrow_color: $gray !default;
     line-height: 22px;
 
     span.current {
-      border: 1px solid #CCC;
-      background: #EEE;
+      border: 1px solid #ccc;
+      background: #eee;
       padding: 0 10px;
       border-radius: 3px;
       display: inline-block;
       line-height: 24px;
       font-size: 14px;
       margin-bottom: 3px;
-      margin-right: 3px
+      margin-right: 3px;
     }
 
     .multiple-options {
       display: block;
       line-height: 24px;
-      padding: 0
+      padding: 0;
     }
   }
 
@@ -239,7 +239,7 @@ $arrow_color: $gray !default;
     min-height: 36px;
     line-height: 22px;
     height: auto;
-    outline: 0!important;
+    outline: 0 !important;
     font-size: $font_size;
   }
 }
