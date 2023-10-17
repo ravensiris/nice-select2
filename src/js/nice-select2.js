@@ -122,6 +122,7 @@ NiceSelect.prototype.processData = function (data) {
         selected: !!item.selected,
         disabled: !!item.disabled,
         optgroup: item.value === "optgroup",
+		classList: item.classList
       },
     });
   });
@@ -147,11 +148,15 @@ NiceSelect.prototype.extractData = function () {
         text = item.dataset.display;
       }
 
+	  const selectedClass = item.dataset.selectedClass
+
       itemData = {
         text,
         value: item.value,
         selected: item.getAttribute("selected") != null,
         disabled: item.getAttribute("disabled") != null,
+		classList: item.classList,
+	    selectedClass
       };
     }
 
@@ -159,6 +164,7 @@ NiceSelect.prototype.extractData = function () {
       selected: item.getAttribute("selected") != null,
       disabled: item.getAttribute("disabled") != null,
       optgroup: item.tagName === "OPTGROUP",
+	  classList: item.classList
     };
 
     data.push(itemData);
@@ -183,6 +189,7 @@ NiceSelect.prototype.renderDropdown = function () {
     this.disabled ? "disabled" : "",
     this.multiple ? "has-multiple" : "",
   ];
+
 
   let searchHtml = '<div class="nice-select-search-box">';
   searchHtml += `<input type="text" class="nice-select-search" placeholder="${this.searchtext}..." title="search"/>`;
@@ -210,6 +217,7 @@ NiceSelect.prototype.renderDropdown = function () {
 NiceSelect.prototype._renderSelectedItems = function () {
   if (this.multiple) {
     let selectedHtml = "";
+
     if (
       this.config.showSelectedItems ||
       this.config.showSelectedItems ||
@@ -232,7 +240,16 @@ NiceSelect.prototype._renderSelectedItems = function () {
         ? this.selectedOptions[0].data.text
         : this.placeholder;
 
-    this.dropdown.querySelector(".current").innerHTML = html;
+	const selectedClass = this.selectedOptions[0].data.selectedClass
+	const currentElem = this.dropdown.querySelector(".current")
+
+    currentElem.innerHTML = html;
+
+	if (selectedClass) {
+		currentElem.className = `current ${selectedClass}`
+	} else {
+		currentElem.className = "current"
+	}
   }
 };
 
@@ -254,9 +271,13 @@ NiceSelect.prototype._renderItem = function (option) {
     el.setAttribute("data-value", option.data.value);
     const classList = [
       "option",
-      option.attributes.selected ? "selected" : null,
-      option.attributes.disabled ? "disabled" : null,
-    ];
+      option.attributes.selected ? "selected" : undefined, 
+      option.attributes.disabled ? "disabled" : undefined,
+    ].filter(x => x !== undefined);
+
+	if (option.attributes.classList){
+		classList.push(...option.attributes.classList)
+	}
 
     el.addEventListener("click", this._onItemClicked.bind(this, option));
     el.classList.add(...classList);
