@@ -240,7 +240,7 @@ NiceSelect.prototype._renderSelectedItems = function () {
         ? this.selectedOptions[0].data.text
         : this.placeholder;
 
-	const selectedClass = this.selectedOptions[0].data.selectedClass
+	const selectedClass = this.selectedOptions[0]?.data.selectedClass
 	const currentElem = this.dropdown.querySelector(".current")
 
     currentElem.innerHTML = html;
